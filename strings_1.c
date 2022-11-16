@@ -1,21 +1,19 @@
-#include "main.h"
+#include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * _strlen - calculate length of a string
  * @s: input string
  * Return: length of a string or 0 if string is NULL
  */
-
-int _strlen(const char *s)
-{
+int _strlen(const char *s) {
     int l = 0;
 
     if (!s)
         return (l);
 
-    while (*s != '\0')
-    {
+    while (*s != '\0') {
         s++;
         l++;
     }
@@ -23,33 +21,12 @@ int _strlen(const char *s)
 }
 
 /**
- * *_strcpy - copy string pointed to by src to string pointed to by dest
- * @dest: destination
- * @src: string to copy
- * Return: a pointer to the destination
- */
-
-char *_strcpy(char *dest, const char *src)
-{
-    int i;
-    if (!src)
-        dest = NULL;
-
-    for (i = 0; src[i] != '\0'; i++)
-    {
-        dest[i] = src[i];
-    }
-    dest[i] = '\0';
-    return (dest);
-}
-
-/**
- * _strcmp - compares two strings
- * @s1: first string
- * @s2: second string
- *
- * Return: the difference of s1 and s2
- */
+* _strcmp - compares two strings
+* @s1: first string
+* @s2: second string
+*
+* Return: the difference of s1 and s2
+*/
 int _strcmp(const char *s1, const char *s2)
 {
     int i = 0;
@@ -90,43 +67,23 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _memset - fills memory with a constant byte
- * @s: memory space to be filled
- * @b: byte to fill with
- * @n: number of spaces to fill
+ * _strncmp - Compare Amount (n) Of Characters Of Two Strings.
+ * @s1: A String.
+ * @s2: A String.
+ * @n: Amount Of Characters To Compare.
  *
- * Return: pointer to memory area s
+ * Return: 1 If The Strings Don't Match Otherwise 0
  */
-char *_memset(char *s, char b, unsigned int n)
-{
-    unsigned int i;
+int _strncmp(const char *s1, const char *s2, size_t n) {
+    size_t i;
 
-    for (i = 0; i < n; i++)
-    {
-        *(s + i) = b;
+    if (s1 == NULL)
+        return (-1);
+    for (i = 0; i < n && s2[i]; i++) {
+        if (s1[i] != s2[i]) {
+            return (1);
+        }
     }
-    return (s);
-}
-
-/**
- * _strchr - locates a character in a string
- * @s: string to check
- * @c: character to check for
- *
- * Return: pointer to first occurrence of c in s or null
- */
-char *_strchr(char *s, char c)
-{
-    int i;
-
-    for (i = 0; *(s + i); i++)
-    {
-        if (*(s + i) == c)
-            return (s + i);
-    }
-    if (*(s + i) == c)
-        return (s + i);
-
     return (0);
 }
 
@@ -158,66 +115,3 @@ char *_strdup(const char *str)
     return (duplicate);
 }
 
-/**
- * check_delim - checks if a string contains a character
- * @c: Character To Check
- * @str: String To Check
- * Return: 1 Success, 0 Failed
- */
-unsigned int check_delim(char c, const char *str)
-{
-    unsigned int i;
-
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        if (c == str[i])
-            return (1);
-    }
-    return (0);
-}
-
-/**
- * _strtok - split a string into tokens
- * @str: String to split
- * @delim: Delimiter
- * Return: Pointer To The Next Token Or NULL
- */
-char *_strtok(char *str, const char *delim)
-{
-    static char *ts;
-    static char *nt;
-    unsigned int i;
-
-    if (str != NULL)
-        nt = str;
-    ts = nt;
-    if (ts == NULL)
-        return (NULL);
-    for (i = 0; ts[i] != '\0'; i++)
-    {
-        if (check_delim(ts[i], delim) == 0)
-            break;
-    }
-    if (nt[i] == '\0' || nt[i] == '#')
-    {
-        nt = NULL;
-        return (NULL);
-    }
-    ts = nt + i;
-    nt = ts;
-    for (i = 0; nt[i] != '\0'; i++)
-    {
-        if (check_delim(nt[i], delim) == 1)
-            break;
-    }
-    if (nt[i] == '\0')
-        nt = NULL;
-    else
-    {
-        nt[i] = '\0';
-        nt = nt + i + 1;
-        if (*nt == '\0')
-            nt = NULL;
-    }
-    return (ts);
-}

@@ -1,110 +1,82 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stddef.h>
+#include <stdio.h>
 #include <unistd.h>
 
-#define	ATEXIT_SIZE	50
+#define BUFF_SIZE 1024
+#define PATH_MAX 4096
+#define DELIM " \t\r\n\a"
+#define PRINT(c) (write(STDOUT_FILENO, c, _strlen(c)))
 
-/*GLOBAL VARIABLES*/
-extern int pipe_count, fd;
-extern char *args[512];
-extern char *history_file;
-extern char input_buffer[1024];
-extern char *cmd_exec[100];
-extern int flag, len;
-extern char cwd[1024];
-extern pid_t pid;
-extern int no_of_lines;
-extern int environ_flag;
-extern int flag_pipe, flag_without_pipe;
-extern int output_redirection, input_redirection;
-extern int bang_flag;
-extern int status; //pid, status;
-extern char history_data[1024][1024];
-extern char current_directory[1024];
-extern char ret_file[3072];
-extern char his_var[2048];
-extern char *input_redirection_file;
-extern char *output_redirection_file;
 extern char **environ;
-extern char *shell_name;
-extern char *absolute_shell_name;
-extern int cmd_count;
 
-struct atexit {
-    struct atexit *next;		/* next in the list */
-    int ind;			/* next index in this table */
-    void (*fns[ATEXIT_SIZE])();	/* the table itself */
-};
+/**
+ * struct builtin - contain builtin to handle and function to execute
+ * @command:pointer to char
+ * @fun:fun to execute when builtin true
+ */
 
-void clear_variables();
+typedef struct  builtin
+{
+    char *command;
+    int (*fun)(char **line, int er);
+} bul_t;
 
-void file_process();
-
-void file_write();
-
-void bang_execute();
-
-void environ_ment();
-
-void set_environment_variables();
-
-void change_directory();
-
-void parent_directory();
-
-void echo_calling(char *echo_val);
-
-void history_execute_with_constants();
-
-char *skip_whitespaces(char *s);
-
-void tokenize_commands(char *com_exec);
-
-void tokenize_redirect_input_output(char *cmdExec);
-
-void tokenize_redirect_input(char *cmdExec);
-
-void tokenize_redirect_output(char *cmdExec);
-
-char *skip_quotes(char *str);
-
-int split(char *cmd_exec, int, int, int);
-
-void execute_pipe();
-
-char *abs_name();
-
-int command(int, int, int, char *cmd_exec);
-
-char *read_cmd(void);
-
-void print_prompt1();
-
-void print_prompt2();
-
-int _atoi(const char *str);
+char *_strtok(char *str, const char *tok);
+unsigned int contains_char(char c, const char *str);
 
 int _strlen(const char *s);
-
-char *_strcpy(char *dest, const char *src);
+int _putchar(char c);
+int _atoi(const char *s);
 
 int _strcmp(const char *s1, const char *s2);
-
+int _isalpha(int c);
+void array_rev(char *arr, int len);
+int num_len(int num);
+char *_itoa(unsigned int n);
 char *_strcat(char *dest, char *src);
 
-char *_memset(char *s, char b, unsigned int n);
-
-char *_strchr(char *s, char c);
-
+int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strdup(const char *str);
 
-char *_strtok(char *str, const char *delim);
 
-void *_realloc(void *ptr, unsigned int new_size);
+void *fill_an_array(void *a, int num, unsigned int len);
+char *_memcpy(char *dest, const char *src, unsigned int n);
 
-void sigintHandler(__attribute__((unused)) int sig_num);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void free_all(char **input, char *line);
 
-void ex_it(int stat_us);
+void prompt(void);
+void signal_to_handel(int sig);
+char *_getline(void);
+
+int path_cmd(char **line);
+char *_getenv(char *name);
+char **parse_cmd(char *cmd);
+int handle_builtin(char **cmd, int ex_status);
+void read_file(char *filename, char **argv);
+char *build(char *token, char *value);
+int check_builtin(char **cmd);
+
+int check_cmd(char **tokens, char *line, int count, char **argv);
+void execute_file(char *line, int counter, FILE *fp, char **argv);
+void exit_file(char **cmd, char *line, FILE *fd);
+
+void handle_comments(char *buff);
+int history(char *input);
+int print_history(char **cmd, int er);
+int print_env(char **cmd, int er);
+int change_dir(char **cmd, int er);
+int print_help(char **cmd, int er);
+int echo_call(char **cmd, int er);
+void  ex_it(char **cmd, char *input, char **argv, int count);
+int print_echo(char **cmd);
+
+void print_pos_number(unsigned int n);
+void print_int(int n);
+void print_error(char *line, int c, char **argv);
+void custom_error(char **argv, int c, char **cmd);
 
 #endif /* MAIN_H */
