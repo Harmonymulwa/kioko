@@ -71,12 +71,15 @@ int _pow(int base, int exponent)
  */
 int _atoi(const char *str)
 {
+	int j, i, n = 0, k = 1;
+	char *tmp;
+
 	if (str == NULL)
 	{
 		return (0);
 	}
-	int j, i, n = 0, k = 1;
-	char *tmp = _strdup(str);
+
+	tmp = _strdup(str);
 
 	if (*str == '-')
 	{
