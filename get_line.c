@@ -44,7 +44,7 @@ char *buff = malloc(BUFF_SIZE);
 		}
 	}
 	buff[i] = '\0';
-    handle_comments(buff);
+	handle_comments(buff);
 	return (buff);
 }
 

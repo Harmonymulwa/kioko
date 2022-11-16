@@ -6,7 +6,7 @@
  */
 void prompt(void)
 {
-    PRINT("$ ");
+	PRINT("$ ");
 }
 
 /**

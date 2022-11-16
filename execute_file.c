@@ -23,7 +23,7 @@ void read_file(char *filename, char **argv)
 	while ((getline(&line, &len, fp)) != -1)
 	{
 		counter++;
-        execute_file(line, counter, fp, argv);
+		execute_file(line, counter, fp, argv);
 
 	}
 	if (line)
@@ -48,7 +48,7 @@ void execute_file(char *line, int counter, FILE *fp, char **argv)
 
 		if (_strncmp(cmd[0], "exit", 4) == 0)
 		{
-            exit_file(cmd, line, fp);
+			exit_file(cmd, line, fp);
 		}
 		else if (check_builtin(cmd) == 0)
 		{

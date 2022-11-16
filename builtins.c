@@ -25,7 +25,7 @@ void  ex_it(char **cmd, char *input, char **argv, int count)
 	{
 		if (_isalpha(cmd[1][i++]) != 0)
 		{
-            custom_error(argv, count, cmd);
+			custom_error(argv, count, cmd);
 			break;
 		}
 		else
@@ -74,10 +74,10 @@ int change_dir(char **cmd, __attribute__((unused))int er)
 /**
  * print_env - display environment variables
  * @cmd:Parsed Command
- * @er:status of Last command executed
+ * @x:status of Last command executed
  * Return:Always 0
  */
-int print_env(__attribute__((unused)) char **cmd, __attribute__((unused)) int er)
+int print_env(__attribute__((unused))char **cmd, __attribute__((unused))int x)
 {
 size_t i;
 	int len;
@@ -132,12 +132,12 @@ int echo_call(char **cmd, int st)
 
 	if (_strncmp(cmd[1], "$?", 2) == 0)
 	{
-        print_int(st);
+		print_int(st);
 		PRINT("\n");
 	}
 	else if (_strncmp(cmd[1], "$$", 2) == 0)
 	{
-        print_pos_number(pid);
+		print_pos_number(pid);
 		PRINT("\n");
 
 	}

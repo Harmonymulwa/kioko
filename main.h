@@ -20,8 +20,8 @@ extern char **environ;
 
 typedef struct  builtin
 {
-    char *command;
-    int (*fun)(char **line, int er);
+	char *command;
+	int (*fun)(char **line, int er);
 } bul_t;
 
 char *_strtok(char *str, const char *tok);
@@ -66,8 +66,8 @@ void exit_file(char **cmd, char *line, FILE *fd);
 
 void handle_comments(char *buff);
 int history(char *input);
-int print_history(char **cmd, int er);
-int print_env(char **cmd, int er);
+int print_hist(char **cmd, int er);
+int print_env(char **cmd, int x);
 int change_dir(char **cmd, int er);
 int print_help(char **cmd, int er);
 int echo_call(char **cmd, int er);

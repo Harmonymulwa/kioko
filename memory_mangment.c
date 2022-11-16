@@ -8,26 +8,30 @@
  *@new_size: New Size Of The Pointer
  *Return: Void Pointer Reallocated Memory
  */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size) {
-    void *result;
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+{
+	void *result;
 
-    if (new_size == old_size)
-        return (ptr);
-    if (new_size == 0 && ptr) {
-        free(ptr);
-        return (NULL);
-    }
-    result = malloc(new_size);
-    if (result == NULL)
-        return (NULL);
-    if (ptr == NULL) {
-        fill_an_array(result, '\0', new_size);
-        free(ptr);
-    } else {
-        _memcpy(result, ptr, old_size);
-        free(ptr);
-    }
-    return (result);
+	if (new_size == old_size)
+		return (ptr);
+	if (new_size == 0 && ptr)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	result = malloc(new_size);
+	if (result == NULL)
+		return (NULL);
+	if (ptr == NULL)
+	{
+		fill_an_array(result, '\0', new_size);
+		free(ptr);
+	} else
+	{
+		_memcpy(result, ptr, old_size);
+		free(ptr);
+	}
+	return (result);
 
 }
 
@@ -37,11 +41,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size) {
  * @line:Char Pointer
  * Return: Void
  */
-void free_all(char **cmd, char *line) {
-    free(cmd);
-    free(line);
-    cmd = NULL;
-    line = NULL;
+void free_all(char **cmd, char *line)
+{
+	free(cmd);
+	free(line);
+	cmd = NULL;
+	line = NULL;
 }
 
 /**
@@ -51,13 +56,13 @@ void free_all(char **cmd, char *line) {
  * @n: Size (How Much You Will Copy)
  *Return: Void Pointer
  */
-char *_memcpy(char *dest, const char *src, unsigned int n) {
-    unsigned int i;
+char *_memcpy(char *dest, const char *src, unsigned int n)
+{
+	unsigned int i;
 
-    for (i = 0; i < n; i++) {
-        dest[i] = src[i];
-    }
-    return (dest);
+	for (i = 0; i < n; i++)
+		dest[i] = src[i];
+	return (dest);
 }
 
 /**
@@ -67,16 +72,18 @@ char *_memcpy(char *dest, const char *src, unsigned int n) {
  * @len:Length
  *Return: Void Pointer
  */
-void *fill_an_array(void *a, int num, unsigned int len) {
-    char *p = a;
-    unsigned int i = 0;
+void *fill_an_array(void *a, int num, unsigned int len)
+{
+	char *p = a;
+	unsigned int i = 0;
 
-    while (i < len) {
-        *p = num;
-        p++;
-        i++;
-    }
-    return (a);
+	while (i < len)
+	{
+		*p = num;
+		p++;
+		i++;
+	}
+	return (a);
 }
 
 /**
@@ -85,13 +92,15 @@ void *fill_an_array(void *a, int num, unsigned int len) {
  * @len:Length Of Array
  * Return: Void(Reverse Array)
  */
-void array_rev(char *arr, int len) {
-    int i;
-    char tmp;
+void array_rev(char *arr, int len)
+{
+	int i;
+	char tmp;
 
-    for (i = 0; i < (len / 2); i++) {
-        tmp = arr[i];
-        arr[i] = arr[(len - 1) - i];
-        arr[(len - 1) - i] = tmp;
-    }
+	for (i = 0; i < (len / 2); i++)
+	{
+		tmp = arr[i];
+		arr[i] = arr[(len - 1) - i];
+		arr[(len - 1) - i] = tmp;
+	}
 }

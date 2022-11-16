@@ -8,8 +8,9 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c) {
-    return (write(1, &c, 1));
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
 
 /**
@@ -22,7 +23,7 @@ void print_pos_number(unsigned int n)
 	unsigned int x = n;
 
 	if ((x / 10) > 0)
-        print_pos_number(x / 10);
+		print_pos_number(x / 10);
 
 	_putchar(x % 10 + '0');
 }
@@ -41,7 +42,7 @@ void print_int(int n)
 		x = -x;
 	}
 	if ((x / 10) > 0)
-        print_pos_number(x / 10);
+		print_pos_number(x / 10);
 
 	_putchar(x % 10 + '0');
 }
@@ -55,16 +56,16 @@ void print_int(int n)
  */
 void print_error(char *input, int counter, char **argv)
 {
-    char *er;
+	char *er;
 
-    PRINT(argv[0]);
-    PRINT(": ");
-    er = _itoa(counter);
-    PRINT(er);
-    free(er);
-    PRINT(": ");
-    PRINT(input);
-    PRINT(": not found\n");
+	PRINT(argv[0]);
+	PRINT(": ");
+	er = _itoa(counter);
+	PRINT(er);
+	free(er);
+	PRINT(": ");
+	PRINT(input);
+	PRINT(": not found\n");
 }
 
 /**
@@ -76,15 +77,15 @@ void print_error(char *input, int counter, char **argv)
  */
 void custom_error(char **argv, int c, char **cmd)
 {
-    char *er = _itoa(c);
+	char *er = _itoa(c);
 
-    PRINT(argv[0]);
-    PRINT(": ");
-    PRINT(er);
-    PRINT(": ");
-    PRINT(cmd[0]);
-    PRINT(": Illegal number: ");
-    PRINT(cmd[1]);
-    PRINT("\n");
-    free(er);
+	PRINT(argv[0]);
+	PRINT(": ");
+	PRINT(er);
+	PRINT(": ");
+	PRINT(cmd[0]);
+	PRINT(": Illegal number: ");
+	PRINT(cmd[1]);
+	PRINT("\n");
+	free(er);
 }

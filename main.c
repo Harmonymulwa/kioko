@@ -22,8 +22,8 @@ int main(__attribute__((unused)) int argc, char **argv)
 		if (isatty(STDIN_FILENO))
 			prompt();
 		input = _getline();
-        ++counter;
-        if (input[0] == '\0')
+		++counter;
+		if (input[0] == '\0')
 		{
 			continue;
 		}
@@ -31,7 +31,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		cmd = parse_cmd(input);
 		if (_strcmp(cmd[0], "exit") == 0)
 		{
-            ex_it(cmd, input, argv, counter);
+			ex_it(cmd, input, argv, counter);
 		}
 		else if (check_builtin(cmd) == 0)
 		{
