@@ -16,7 +16,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 
 	if (argv[1] != NULL)
 		read_file(argv[1], argv);
-	signal(SIGINT, signal_to_handel);
+    signal(SIGINT, signal_to_handle);
 	while (status)
 	{
 		if (isatty(STDIN_FILENO))

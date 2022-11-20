@@ -49,7 +49,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void free_all(char **input, char *line);
 
 void prompt(void);
-void signal_to_handel(int sig);
+void signal_to_handle(int sig);
 char *_getline(void);
 
 int path_cmd(char **line);
@@ -71,7 +71,7 @@ int print_env(char **cmd, int x);
 int change_dir(char **cmd, int er);
 int print_help(char **cmd, int er);
 int echo_call(char **cmd, int er);
-void  ex_it(char **cmd, char *input, char **argv, int count);
+void ex_it(char **cmd, char *input, char **argv, int count);
 int print_echo(char **cmd);
 
 void print_pos_number(unsigned int n);
