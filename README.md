@@ -76,16 +76,16 @@ options `-Wall -Werror -Wextra -pedantic -std=gnu89`.
 
 ## Checks
 
-- :heavy_check_mark: Write a beautiful code that passes the Betty checks
-- :heavy_check_mark: Handle command lines with arguments
-- :heavy_check_mark: Handle the PATH
-- :heavy_check_mark: Implement the exit built-in, that exits the shell
-- :heavy_check_mark: Write your own getline function
-- :heavy_check_mark: You are not allowed to use strtok
-- :heavy_check_mark: Implement the builtin command cd
-- :heavy_check_mark: Handle variables replacement
-- :heavy_check_mark: Handle comments (#)
-- :heavy_check_mark: Your shell can take a file as a command line argument
+Write a beautiful code that passes the Betty checks   :heavy_check_mark: \
+Handle command lines with arguments   :heavy_check_mark: \
+Handle the PATH   :heavy_check_mark: \
+Implement the exit built-in, that exits the shell   :heavy_check_mark: \
+Write your own getline function   :heavy_check_mark: \
+You are not allowed to use strtok   :heavy_check_mark: \
+Implement the builtin command cd   :heavy_check_mark: \
+Handle variables replacement   :heavy_check_mark: \
+Handle comments (#)   :heavy_check_mark: \
+Your shell can take a file as a command line argument   :heavy_check_mark:
 
 ## Compilation
 
